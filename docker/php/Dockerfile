@@ -35,6 +35,12 @@ RUN echo ja_JP.UTF-8 UTF-8 > /etc/locale.gen && locale-gen
 RUN curl -sS https://getcomposer.org/installer | \
     php -- --install-dir=/usr/bin --filename=composer
 
+USER appuser
+RUN composer config -g repos.packagist composer https://packagist.jp \
+    && composer global require hirak/prestissimo
+
+USER root
+
 RUN mkdir -p /var/sessions \
     && chown -R www-data /var/sessions
 
