@@ -1,10 +1,6 @@
 # Usage
 
 ```
+$ docker-compose run -u appuser application composer install
 $ docker-compose up
-$ docker-compose exec -it -u appuser application /bin/bash
-
-(in the container)
-
-$ composer install
 ```
